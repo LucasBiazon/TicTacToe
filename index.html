@@ -9,57 +9,85 @@
 </head>
 <body> 
 
-    <main class="h-auto min-h-[100svh] w-full flex justify-center items-center gap-14">
-        <div id="tabuleiro" class="grid grid-cols-3 grid-rows-3 gap-8 ">
-            <div id="box1" class="boxs bg-black text-slate-50 h-20 w-20 cursor-pointer"></div>
-            <div id="box2" class="boxs bg-black text-slate-50 h-20 w-20 cursor-pointer"></div>
-            <div id="box3" class="boxs bg-black text-slate-50 h-20 w-20 cursor-pointer"></div>
-            <div id="box4" class="boxs bg-black text-slate-50 h-20 w-20 cursor-pointer"></div>
-            <div id="box5" class="boxs bg-black text-slate-50 h-20 w-20 cursor-pointer"></div>
-            <div id="box6" class="boxs bg-black text-slate-50 h-20 w-20 cursor-pointer"></div>
-            <div id="box7" class="boxs bg-black text-slate-50 h-20 w-20 cursor-pointer"></div>
-            <div id="box8" class="boxs bg-black text-slate-50 h-20 w-20 cursor-pointer"></div>
-            <div id="box9" class="boxs bg-black text-slate-50 h-20 w-20 cursor-pointer"></div>
-        </div>
 
-        <aside class="box-border h-24  w-44 flex flex-col gap-2 px-2 items-center justify-center  border-4 border-slate-600 rounded-xl">
-            <div class="flex items-center justify-center gap-5 w-full">
-                <div  class="flex gap-2 w-9/12">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+    <main class="h-auto relative min-h-[100svh] w-full flex flex-col-reverse md:flex-row justify-center items-center gap-14 px-4 bg-zinc-200">
+       
+        <section id="inicial" class="absolute w-full h-full z-10 flex items-center justify-center">
+            <div action="" class="flex flex-col gap-5">
+                <h1 class="font-bold text-5xl pb-5">TicTacToe</h1>
+
+                <div class="flex h-8 items-center border-b-2 border-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
                     </svg>
-                    Jogador 1
+                    <input type="text"  name="" id="player1" placeholder="Player 1" class="bg-transparent outline-0 px-2 placeholder:text-slate-600">
                 </div>
-                <div class="w-2/12">
-                     0
-                </div>
+    
+                <div class="flex h-8 items-center border-b-2 border-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                        </svg>
+                        <input type="text"  name="" id="player2" placeholder="Player 2" class="bg-transparent outline-0 px-2 placeholder:text-slate-600">
+                    </div>
+                <button onclick='Jogar()' class="bg-slate-700 text-slate-50 font-semibold">
+                    Jogar
+                </button>
+            </div>
+        </section>
+
+        <div id="jogo" class="hidden">
+        <section class="h-auto relative min-h-[100svh] w-full flex flex-col-reverse md:flex-row justify-center items-center gap-14 px-4">
+            <div id="tabuleiro" class="grid grid-cols-3 grid-rows-3 gap-8 ">
+                <div id="box1" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                <div id="box2" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                <div id="box3" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                <div id="box4" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                <div id="box5" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                <div id="box6" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                <div id="box7" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                <div id="box8" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                <div id="box9" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
             </div>
 
-            <div class="flex gap-5 items-center justify-center w-full">
-                <div class="flex gap-2 w-9/12">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                    </svg>
-                    Jogador 2
+            <aside class="box-border static top-0 right-0 xl:absolute xl:top-1/4 xl:right-64  h-24  w-44 flex flex-col gap-2 px-2 items-center justify-center  border-4 border-slate-600 rounded-xl">
+                <div class="flex items-center justify-center gap-5 w-full">
+                    <div  class="flex gap-2 w-9/12">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                        <span id="name1">Jogador 1</span> 
+                    </div>
+                    <div class="w-2/12">
+                        0
+                    </div>
                 </div>
-                <div class="w-2/12">
-                     0
-                </div>
-            </div>
 
-            <div class="flex gap-5 items-center justify-center w-full">
-                <div class="flex gap-2 w-9/12">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
-                    </svg>
-                    Empate
+                <div class="flex gap-5 items-center justify-center w-full">
+                    <div class="flex gap-2 w-9/12">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        </svg>
+                        <span id="name2">Jogador 2</span> 
+                    </div>
+                    <div class="w-2/12">
+                        0
+                    </div>
                 </div>
-                <div class="w-2/12">
-                     0
-                </div>
-            </div>
-        </aside>
 
+                <div class="flex gap-5 items-center justify-center w-full">
+                    <div class="flex gap-2 w-9/12">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
+                        </svg>
+                        Empate
+                    </div>
+                    <div class="w-2/12">
+                        0
+                    </div>
+                </div>
+            </aside>
+        </section>
+    </div>
     </main>
     
 </body>
