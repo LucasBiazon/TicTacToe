@@ -1,3 +1,4 @@
+
 const player1 = document.querySelector("#player1")
 const player2 = document.querySelector("#player2")
 const tabuleiro = document.querySelector("#tabuleiro")
@@ -41,9 +42,14 @@ function Jogada(event){
             if(turno.includes('x')){
                 turno = 'o'
                 document.querySelector("#turn").innerHTML = `Vez de ${turno.toUpperCase()}`
+                document.querySelector('#jogador1').classList.remove('bg-zinc-400')
+                document.querySelector('#jogador2').classList.add('bg-zinc-400')
+                
             }else{
                 turno = 'x'
                 document.querySelector("#turn").innerHTML = `Vez de ${turno.toUpperCase()}`
+                document.querySelector('#jogador1').classList.add('bg-zinc-400')
+                document.querySelector('#jogador2').classList.remove('bg-zinc-400')
             }
           
         }
@@ -81,28 +87,36 @@ function checarVitoria(valor){
             gameOver = true
             break
         }
-
     }
+
+    let casasJogadas = 0
+    for(let i = 0; i < boxs.length; i++){
+        if(boxs[i].classList.contains('x') || boxs[i].classList.contains('o')){
+            casasJogadas++
+        }
+    }
+
+    if(casasJogadas == 9 && gameOver == false){
+        contEmpate++
+        document.querySelector('#contEmpate').innerHTML = contEmpate
+        GameOver()
+    }
+
 }
 
 function GameOver(){
-     
-   
-    for(let i in boxs){
-        boxs[i].classList.remove('x')
-        boxs[i].classList.remove('o')
+    for(let i = 0 ; i < boxs.length; i++){
+        boxs[i].classList.remove('x', 'o', 'bg-red-400');
         boxs[i].textContent = ''
-        boxs[i].classList.remove("bg-red-400")
     }
- 
+    gameOver = false
+    tabuleiro.addEventListener("click", Jogada)
    
 }
 
 function Win(one, two, three, valor) {  
     const line = [one, two, three]
-    line.map( (i) => {
-        i.classList.add('bg-red-400')
-    })
+    line.map( (i) => i.classList.add('bg-red-400'))
     if(valor == 'x'){
         contX++
         document.querySelector("#cont1").innerHTML = contX
@@ -111,7 +125,8 @@ function Win(one, two, three, valor) {
         contO++
         document.querySelector("#cont2").innerHTML = contO
     }
-    setTimeout( GameOver, 2000)
+    tabuleiro.removeEventListener("click", Jogada)
+    setTimeout( GameOver, 1000)
 }
 
 function Resetar(){
@@ -121,21 +136,12 @@ function Resetar(){
     contX = 0
     contO = 0
     contEmpate = 0
-    tabuleiro.addEventListener("click", Jogada)
     document.querySelector("#turn").innerHTML = `Vez de ${turno.toUpperCase()}`
     document.querySelector("#cont1").innerHTML = contX
     document.querySelector("#cont2").innerHTML = contO
     document.querySelector('#contEmpate').innerHTML = contEmpate
-    for(let i in boxs){
-        if(boxs[i].classList.contains('x')){
-            boxs[i].classList.remove('x')
-        }
-        if(boxs[i].classList.contains('o')){
-            boxs[i].classList.remove('o')
-        }
+    for(let i = 0 ; i < boxs.length; i++){
+        boxs[i].classList.remove('x', 'o', 'bg-red-400');
         boxs[i].textContent = ''
-        if(boxs[i].classList.contains('bg-red-400')){
-            boxs[i].classList.remove('bg-red-400')
-        }
     }
 }
