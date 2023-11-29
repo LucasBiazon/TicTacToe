@@ -37,19 +37,22 @@
 
         <div id="jogo" class="hidden">
         <section class="h-auto relative min-h-[100svh] w-full flex flex-col-reverse md:flex-row justify-center items-center gap-14 px-4">
-            <div id="tabuleiro" class="grid grid-cols-3 grid-rows-3 gap-8 ">
-                <div id="box1" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
-                <div id="box2" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
-                <div id="box3" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
-                <div id="box4" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
-                <div id="box5" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
-                <div id="box6" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
-                <div id="box7" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
-                <div id="box8" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
-                <div id="box9" class="boxs grid place-content-center bg-black text-slate-50 text-5xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+            <div class="flex items-center justify-center flex-col">
+                <div id="tabuleiro" class="grid grid-cols-3 grid-rows-3 gap-8 ">
+                    <div id="box1" class="boxs grid place-content-center border-2 border-collapse border-slate-950 text-3xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                    <div id="box2" class="boxs grid place-content-center border-2 border-collapse border-slate-950 text-3xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                    <div id="box3" class="boxs grid place-content-center border-2 border-collapse border-slate-950 text-3xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                    <div id="box4" class="boxs grid place-content-center border-2 border-collapse border-slate-950 text-3xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                    <div id="box5" class="boxs grid place-content-center border-2 border-collapse border-slate-950 text-3xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                    <div id="box6" class="boxs grid place-content-center border-2 border-collapse border-slate-950 text-3xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                    <div id="box7" class="boxs grid place-content-center border-2 border-collapse border-slate-950 text-3xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                    <div id="box8" class="boxs grid place-content-center border-2 border-collapse border-slate-950 text-3xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                    <div id="box9" class="boxs grid place-content-center border-2 border-collapse border-slate-950 text-3xl font-sans font-semibold h-24 w-24 cursor-pointer"></div>
+                </div>
+                <p id="turn" class="text-center pt-4"></p>
+                <button onclick="Resetar()" class="bg-slate-700 text-slate-50 font-semibold w-full mt-4">Resetar</button>
             </div>
-
-            <aside class="box-border static top-0 right-0 xl:absolute xl:top-1/4 xl:right-64  h-24  w-44 flex flex-col gap-2 px-2 items-center justify-center  border-4 border-slate-600 rounded-xl">
+            <aside class="box-border h-24  w-auto min-w-44  flex flex-col gap-2 px-2 items-center justify-center  border-4 border-slate-600 rounded-xl">
                 <div class="flex items-center justify-center gap-5 w-full">
                     <div  class="flex gap-2 w-9/12">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
@@ -57,7 +60,7 @@
                         </svg>
                         <span id="name1">Jogador 1</span> 
                     </div>
-                    <div class="w-2/12">
+                    <div id="cont1" class="w-2/12">
                         0
                     </div>
                 </div>
@@ -69,7 +72,7 @@
                         </svg>
                         <span id="name2">Jogador 2</span> 
                     </div>
-                    <div class="w-2/12">
+                    <div id="cont2" class="w-2/12">
                         0
                     </div>
                 </div>
@@ -81,8 +84,8 @@
                         </svg>
                         Empate
                     </div>
-                    <div class="w-2/12">
-                        0
+                    <div id="contEmpate" class="w-2/12">
+                        21
                     </div>
                 </div>
             </aside>
